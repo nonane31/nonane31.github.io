@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW,NOARCHIVE">
+	<title>Embedded Clock for Livestream Assistant</title>
+	<style>
+body{
+	margin:0;
+	display:flex;
+	flex-flow:row-reverse;
+	overflow:hidden;
+	font-family:monospace;
+}
+#container_clock{
+}
+.clock_base{
+	margin-left:0.05em;
+	border:0.05em black solid;
+	font-size:10vw;
+}
+#container_swatch{
+	display:flex;
+	flex-flow:column;
+}
+.swatch_base{
+	display:flex;
+	flex-flow:row-reverse;
+	font-size:5vw;
+}
+	</style>
+</head>
+<body>
+<div id="container_clock"></div>
+<div id="container_swatch"></div>
+<script>
+(function(){
+	let elm_container_clock=document.getElementById("container_clock");
+	let elm_container_swatch=document.getElementById("container_swatch");
+
+	let elm_clock=document.createElement("div");
+	elm_clock.className="clock_base";
+	elm_container_clock.appendChild(elm_clock);
+	setInterval(()=>{
+		let date=new Date();
+		elm_clock.textContent=("0"+date.getDate()).substr(-2)+"/"+("0"+date.getHours()).substr(-2)+":"+("0"+date.getMinutes()).substr(-2)+":"+("0"+date.getSeconds()).substr(-2);
+	},50);
+
+	/*for(let i=0;i<2;i++){//>
+		let time_from=new Date();
+		let is_active=false;
+		let elm_swatch_base=document.createElement("div");
+		elm_swatch_base.className="swatch_base";
+		elm_container_swatch.appendChild(elm_swatch_base);
+
+		let elm_swatch_reset=document.createElement("button");
+		elm_swatch_reset.textContent="X";
+		addEventListener("click",()=>{
+		});
+		elm_swatch_base.appendChild(elm_swatch_reset);
+
+		let elm_swatch_disp=document.createElement("div");
+		elm_swatch_disp.textContent="0";
+		elm_swatch_base.appendChild(elm_swatch_disp);
+	}*/
+})();
+</script>
+</body>
+</html>
